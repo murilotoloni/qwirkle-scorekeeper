@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quirkle Scorekeeper</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="header">
+            <h1>Quirkle Scorekeeper</h1>
+            <button id="menu-button" onclick="openMenu()"><i class="fas fa-bars"></i></button>
+        </div>
+        <h2 id="current-player"></h2>
+        <div id="scoreboard"></div>
+        <div class="score-input-container">
+            <p>Score to Add: <span id="scoreToAddDisplay">0</span></p>
+            <div class="score-buttons">
+                <button onclick="updateScoreToAdd(1)">1</button>
+                <button onclick="updateScoreToAdd(2)">2</button>
+                <button onclick="updateScoreToAdd(4)">4</button>
+                <button onclick="updateScoreToAdd(6)">6</button>
+                <button onclick="updateScoreToAdd(9)">9</button>
+                <button onclick="updateScoreToAdd(12)">12</button>
+                <button onclick="clearScoreToAdd()">Clear</button>
+            </div>
+        </div>
+        <div class="game-options">
+            <button onclick="addScore()">Add Score</button>
+            <button onclick="skipPlayer()">Skip Player</button>
+            <button onclick="confirmResetScores()">Reset Scores</button>
+            <button onclick="endGame()">End Game</button>
+        </div>
+    </div>
+
+    <div id="menu-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeMenu()">&times;</span>
+            <h2>Menu</h2>
+            <label for="player-count">Choose number of players:</label>
+            <select id="player-count" onchange="setupPlayers(this.value)">
+                <option value="">-- Select --</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="endgame-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEndGameModal()">&times;</span>
+            <h2>Game Over</h2>
+            <div id="final-scores"></div>
+            <h3 id="winner-announcement"></h3>
+        </div>
+    </div>
+
+    <div id="reset-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeResetModal()">&times;</span>
+            <h2>Reset Scores</h2>
+            <p>Are you sure you want to reset all scores?</p>
+            <div class="modal-buttons">
+                <button onclick="resetScores()">Yes</button>
+                <button onclick="closeResetModal()">No</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
